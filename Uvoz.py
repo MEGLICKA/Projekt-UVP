@@ -3,10 +3,10 @@ import os
 import requests
 import re
 
-sicilija_julija_url = 'https://www.airbnb.com/s/Sicily--Italy/homes?tab_id=home_tab&refinement_paths%5B%5D=%2Fhomes&flexible_trip_lengths%5B%5D=one_week&monthly_start_date=2024-07-01&monthly_length=3&monthly_end_date=2024-10-01&price_filter_input_type=0&channel=EXPLORE&query=Sicily%2C%20Italy&place_id=ChIJs1lT0GhiEBMRUH22ZykECwE&location_bb=Qhs%2FnkF6cmxCDfiuQT7PvA%3D%3D&date_picker_type=calendar&checkin=2024-07-01&checkout=2024-07-08&source=structured_search_input_header&search_type=autocomplete_click'
+recepti_kosila_url = 'https://www.bbcgoodfood.com/recipes/collection/quick-lunch-recipes'
 sicilija_directory = 'Projekt-UVP'
-ime_html = 'sicilija.html'
-ime_csv = 'sicilija.csv'
+ime_html = 'kosilo.html'
+ime_csv = 'kosilo.csv'
 
 def url_v_niz(url):
     try:
