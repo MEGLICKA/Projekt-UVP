@@ -1,6 +1,4 @@
-import csv
 import os
-import requests
 import re
 
 def preberi_dat_v_niz(directory, ime):

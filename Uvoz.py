@@ -1,12 +1,7 @@
-import csv
 import os
 import requests
-import re
 
-recepti_kosila_url = 'https://www.bbcgoodfood.com/recipes/collection/quick-lunch-recipes'
-sicilija_directory = 'Projekt-UVP'
-ime_html = 'kosilo.html'
-ime_csv = 'kosilo.csv'
+
 
 def url_v_niz(url):
     try:
@@ -27,4 +22,4 @@ def shrani_stran(stran, directory, ime):
     tekst = url_v_niz(stran)
     niz_v_dat(tekst, directory, ime)
 
-
+shrani_stran(https://www.bbcgoodfood.com/recipes/collection/quick-lunch-recipes, 'Projekt-UVP', 'kosilo.html')
