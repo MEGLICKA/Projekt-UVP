@@ -22,4 +22,4 @@ def shrani_stran(stran, directory, ime):
     tekst = url_v_niz(stran)
     niz_v_dat(tekst, directory, ime)
 
-shrani_stran(https://www.bbcgoodfood.com/recipes/collection/quick-lunch-recipes, 'Projekt-UVP', 'kosilo.html')
+shrani_stran('https://www.bbcgoodfood.com/recipes/collection/quick-lunch-recipes', 'Projekt-UVP', 'kosilo.html')
