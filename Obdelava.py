@@ -1,6 +1,11 @@
 import os
 import re
 
+
+def decode_unicode_escapes(s):
+    """Pretvori Unicode escape znake (npr. \u0026) v njihove znake (npr. &)."""
+    return s.encode('utf-8').decode('unicode_escape')
+
 def preberi_dat_v_niz(directory, ime):
     path = os.path.join(directory, ime)
     with open(path, 'r', encoding='utf-8') as file_in:
@@ -23,11 +28,11 @@ def recept_v_slovar(recept):
     vegan = re.search(r'"slug":"vegan","display":"Vegan"', recept)
 
     def preveri(match):
-        return match.group(1) if match else None
+        return decode_unicode_escapes(match.group(1)) if match else None
       
     
     return {
-        'Ime': preveri(ime).replace('\u0026', '&'),
+        'Ime': preveri(ime),
         'ID': preveri(id),
         'Ocena': preveri(ocena),
         'Število ocen': preveri(st_ocen),
