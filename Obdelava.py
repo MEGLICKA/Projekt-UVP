@@ -1,6 +1,5 @@
 import os
 import re
-import csv
 
 def preberi_dat_v_niz(directory, ime):
     path = os.path.join(directory, ime)
@@ -25,22 +24,19 @@ def recept_v_slovar(recept):
 
     def preveri(match):
         return match.group(1) if match else None
+      
     
-    ime = preveri(ime)
-    if ime == 'Quick lunch recipes':
-        ime = 'Reuben sandwich'
-
     return {
-        'ime': ime,
-        'id': preveri(id),
-        'ocena': preveri(ocena),
-        'st_ocen': preveri(st_ocen),
-        'cas_priprave': preveri(cas_priprave),
-        'level': preveri(level),
-        'healthy': True if healthy else False,
-        'vegetarian': True if vegetarian else False,
-        'gluten_free': True if gluten_free else False,
-        'vegan': True if vegan else False
+        'Ime': preveri(ime).replace('\u0026', '&'),
+        'ID': preveri(id),
+        'Ocena': preveri(ocena),
+        'Število ocen': preveri(st_ocen),
+        'Čas priprave': preveri(cas_priprave),
+        'Level': preveri(level),
+        'Healthy': True if healthy else False,
+        'Vegetarian': True if vegetarian else False,
+        'Gluten free': True if gluten_free else False,
+        'Vegan': True if vegan else False
     }
 
 def recepte_v_datoteko(ime, directory):
@@ -49,24 +45,16 @@ def recepte_v_datoteko(ime, directory):
     recepti = [recept_v_slovar(kos) for kos in recept]
     return [rec for rec in recepti]
 
-recepti = recepte_v_datoteko('kosilo.html', 'Projekt-UVP')
-print(recepti[:5])
+def preberi_vse_datoteke(directory):
+    recepti = []
+    for ime_datoteke in os.listdir(directory):
+        if ime_datoteke.endswith('.html'):
+            print(f"Obdelujem datoteko: {ime_datoteke}")
+            vsebina_strani = preberi_dat_v_niz(directory, ime_datoteke)
+            recepti_iz_datoteke = stran_v_recepte(vsebina_strani)
+            recepti.extend([recept_v_slovar(kos) for kos in recepti_iz_datoteke])
+    return recepti
 
-
-def napisi_csv(fieldnames, rows, directory, ime):
-    os.makedirs(directory, exist_ok=True)
-    path = os.path.join(directory, ime)
-    with open(path, 'w', encoding='utf-8', newline='') as csv_file: 
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow(row)
-
-
-def recepti_v_csv(recepti, directory, ime):
-    assert recepti and (all(j.keys() == recepti[0].keys() for j in recepti)) 
-    field_names = list(recepti[0].keys()) 
-    napisi_csv(field_names, recepti, directory, ime)
-
-recepti_v_csv(recept_v_slovar('kosilo.html'), 'Projekt-UVP', 'test_kosilo.csv')
-print(f"Datoteka test_kosilo.csv je bila uspešno ustvarjena.")
+#directory = 'Projekt-UVP'
+#vsi_recepti = preberi_vse_datoteke(directory)
+#print(vsi_recepti[:5])

@@ -5,15 +5,15 @@ import Obdelava as ob
 import Shramba as sh
 
 
-recepti_kosila_url = 'https://www.bbcgoodfood.com/recipes/collection/quick-lunch-recipes'
+recepti_kosila_url = 'https://www.bbcgoodfood.com/search?q=all&tab=recipe&page='
 recepti_directory = 'Projekt-UVP'
-ime_html = 'kosilo.html'
+ime_html = 'Good Food.html'
 ime_csv = 'kosilo.csv'
 
 def main(redownload=True, reparse=True):
     path = os.path.join(recepti_directory, ime_html)
     if redownload or not os.path.exists(path):
-        uv.shrani_stran(recepti_kosila_url, recepti_directory, ime_html)
+        uv.shrani_stran(recepti_kosila_url, recepti_directory, ime_html, 156)
     else: 
         print('Datoteka html že obstaja')
     
