@@ -9,7 +9,7 @@ recepti_kosila_url = 'https://www.bbcgoodfood.com/search?q=all&tab=recipe&page='
 recepti_directory = 'Projekt-UVP'
 ime_html = 'Good_Food'
 ime_csv = 'Recepti.csv'
-st_strani = 156
+st_strani = 157
 
 def main(redownload=True, reparse=True):
     path = os.path.join(recepti_directory, ime_html)

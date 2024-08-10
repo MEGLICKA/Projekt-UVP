@@ -18,10 +18,4 @@ def recepti_v_csv(recepti, directory, ime):
     assert recepti and (all(j.keys() == recepti[0].keys() for j in recepti)) 
     field_names = list(recepti[0].keys()) 
     napisi_csv(field_names, recepti, directory, ime)
-
-directory = 'Projekt-UVP'
-vsi_recepti = Obdelava.preberi_vse_datoteke(directory)
-
-# Shranimo vse recepte v CSV datoteko
-csv_ime = 'vsi_recepti.csv'
-recepti_v_csv(vsi_recepti, directory, csv_ime)
+    print(f'Podatki so shranjeni v datoteki {ime}.')
