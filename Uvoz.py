@@ -1,8 +1,6 @@
 import os
 import requests
 
-
-
 def url_v_niz(url):
     try:
         page_content = requests.get(url)
@@ -36,4 +34,3 @@ def shrani_stran(stran, directory, ime, st_strani):
         else:
             print(f"Neuspešen prenos za stran {i}. Preskakujem...")
 
-#shrani_stran('https://www.bbcgoodfood.com/search?q=all&tab=recipe&page=', 'Projekt-UVP', 'Food.html', 157)
