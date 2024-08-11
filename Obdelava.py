@@ -50,6 +50,15 @@ def recepte_v_datoteko(ime, directory):
     recepti = [recept_v_slovar(kos) for kos in recept]
     return [rec for rec in recepti]
 
+def odstrani_duplikate(recepti):
+    videni = set()
+    unikatni_recepti = []
+    for recept in recepti:
+        if recept['ID'] not in videni:  # Domneva, da je 'ID' unikaten
+            unikatni_recepti.append(recept)
+            videni.add(recept['ID'])
+    return unikatni_recepti
+
 def preberi_vse_datoteke(directory):
     recepti = []
     for ime_datoteke in os.listdir(directory):
@@ -58,8 +67,7 @@ def preberi_vse_datoteke(directory):
             vsebina_strani = preberi_dat_v_niz(directory, ime_datoteke)
             recepti_iz_datoteke = stran_v_recepte(vsebina_strani)
             recepti.extend([recept_v_slovar(kos) for kos in recepti_iz_datoteke])
-    return recepti
+    return odstrani_duplikate(recepti)
 
-#directory = 'Projekt-UVP'
-#vsi_recepti = preberi_vse_datoteke(directory)
-#print(vsi_recepti[:5])
+
+
