@@ -54,7 +54,7 @@ def odstrani_duplikate(recepti):
     videni = set()
     unikatni_recepti = []
     for recept in recepti:
-        if recept['ID'] not in videni:  # Domneva, da je 'ID' unikaten
+        if recept['ID'] not in videni:  
             unikatni_recepti.append(recept)
             videni.add(recept['ID'])
     return unikatni_recepti
