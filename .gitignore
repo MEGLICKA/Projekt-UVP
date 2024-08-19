@@ -5,7 +5,7 @@ __pycache__/
 __pycache__ 
 
 # No html files
-Projekt-UVP/html/*
+Projekt-UVP/*.html
 
 # C extensions
 *.so
