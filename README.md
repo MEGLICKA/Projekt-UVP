@@ -14,16 +14,16 @@ Predpogoj za pravilno delovanje projekta je naložen program Python verzije 3. V
 ### Knjižnice
 Za optimalno delovanje funkcij je zaželjena namestitev naslednjih knjižnic, v kolikor jih še nimate. Namestite jih lahko s sledečim ukazom v terminalu:
 * knjižnice za pridobivanje, obdelovanje in shranjevanje podatkov
-```bash
+```
 pip install os requests re csv
 ```
 * knjižnice za analizo podatkov
-```bash
-pip install pandas matplotlib numpy seaborn
+```
+pip install pandas mathplotlib numpy seaborn
 ```
 ### Zagon programa
 Po pravilni vzpostavitvi delovnega okolja in kloniranju repozitorija, program zaženete s klicom datoteke `Main.py` v terminalu:
-```console
+```
 python Main.py
 ```
 Program se zaključi z izpisom: _Podatki so shranjeni v datoteki Recepti.csv._ 
