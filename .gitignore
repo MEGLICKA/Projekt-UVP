@@ -4,6 +4,9 @@ __pycache__/
 *$py.class
 __pycache__ 
 
+# No html files
+Projekt-UVP/html/*
+
 # C extensions
 *.so
 
