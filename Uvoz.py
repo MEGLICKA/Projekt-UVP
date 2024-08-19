@@ -4,7 +4,7 @@ import requests
 def url_v_niz(url):
     try:
         page_content = requests.get(url)
-        page_content.raise_for_status()  # Preveri, ali je zahteva uspešna
+        page_content.raise_for_status()  
     except requests.exceptions.RequestException as e:
         print(f'Spletna stran ni dosegljiva: {e}')
         return None
@@ -19,14 +19,11 @@ def niz_v_dat(tekst, directory, ime):
 
 def shrani_stran(stran, directory, ime, st_strani):
     for i in range(1, st_strani):
-        # Sestavi URL za posamezno stran
         url = f"{stran}{i}"
         print(f"Prenašam stran: {url}")
         
-        # Prenesi vsebino strani
         tekst = url_v_niz(url)
         
-        # Če je prenos uspešen, shrani stran
         if tekst:
             ime_datoteke = f"{ime}_stran_{i}.html"
             niz_v_dat(tekst, directory, ime_datoteke)

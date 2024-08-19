@@ -1,7 +1,5 @@
 import csv
 import os
-import Obdelava
-
 
 def napisi_csv(fieldnames, rows, directory, ime):
     os.makedirs(directory, exist_ok=True)
@@ -19,6 +17,3 @@ def recepti_v_csv(recepti, directory, ime):
     field_names = list(recepti[0].keys()) 
     napisi_csv(field_names, recepti, directory, ime)
     print(f'Podatki so shranjeni v datoteki {ime}.')
-
-recepti = Obdelava.preberi_vse_datoteke('Projekt-UVP')
-recepti_v_csv(recepti, 'Projekt-UVP', 'Recepti.csv')
