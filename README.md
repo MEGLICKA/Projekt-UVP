@@ -3,7 +3,7 @@
 Projekt se osredotoča na analizo zbirke receptov, kjer se raziskujejo različni vidiki, kot so ocene, čas priprave, zahtevnost, in druge značilnosti receptov. Uporabljena so orodja za obdelavo podatkov, vizualizacijo in izračun statistik, kar omogoča vpogled v najbolj priljubljene in kakovostne recepte.
 
 ## Delovanje funkcij
-V datoteki `Uvoz.py` se prične uvoz podatkov v obliki .html, ki se shranijo v mapo `Projekt-UVP`. `Obdelava.py` skrbi, da se uvoženi podatki obdelajo po naših željah, s pomočjo `Shramba.py` pa se le-ti shranijo v obliki .csv datoteke.
+V datoteki `1_Uvoz.py` se prične uvoz podatkov v obliki .html, ki se shranijo v mapo `Projekt-UVP`. `2_Obdelava.py` skrbi, da se uvoženi podatki obdelajo po naših željah, s pomočjo `3_Shramba.py` pa se le-ti shranijo v obliki .csv datoteke.
 
 Vse te funkcije so združene v datoteki `Main.py`, s pomočjo katere zaženemo cel postopek pridobivanja, obdelovanja in shranjevanja podatkov.
 Vpogled v izluščene podatke in njihovo kratko analizo je na voljo v datoteki `Recepti.ipynb`.
