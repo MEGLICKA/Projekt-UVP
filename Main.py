@@ -26,5 +26,5 @@ def main(redownload=True, reparse=True):
     else:
         print('Datoteka csv že obstaja')
         
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

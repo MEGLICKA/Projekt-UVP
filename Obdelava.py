@@ -1,21 +1,27 @@
 import os
 import re
+import html
+
 
 
 def decode_unicode_escapes(s):
-    """Pretvori Unicode escape znake (npr. \u0026) v njihove znake (npr. &)."""
-    return s.encode('utf-8').decode('unicode_escape')
+    """Vrne dekodiran Unicode niz."""
+    return html.unescape(s)
 
 def preberi_dat_v_niz(directory, ime):
+    """Prebere vsebino datoteke iz podane mape 'directory' in vrne vsebino kot niz."""
     path = os.path.join(directory, ime)
     with open(path, 'r', encoding='utf-8') as file_in:
         text = file_in.read()
     return text
 
 def stran_v_recepte(vsebina_strani):
+    """Iz niza 'vsebina_strani' izvleče vse JSON-objekte, ki predstavljajo recepte.
+    Vrne seznam ujemajočih se nizov."""
     return re.findall(r'{"title":.*?,"headingStyledSize".*?}]},', vsebina_strani, flags=re.DOTALL)
 
 def recept_v_slovar(recept):
+    """Izvleče relevantne informacije o receptu iz niza 'recept' in jih vrne kot slovar."""
     ime = re.search(r'"title":"(.*?)"', recept)
     id = re.search(r'"id":"(.*?)"', recept)
     ocena = re.search(r'"ratingValue":(.*?)(?:,|})', recept)
@@ -28,6 +34,8 @@ def recept_v_slovar(recept):
     vegan = re.search(r'"slug":"vegan","display":"Vegan"', recept)
 
     def preveri(match):
+        """Pomožna funkcija, ki vrne dekodirano vrednost iz ujemanja,
+        če obstaja, sicer vrne None."""
         return decode_unicode_escapes(match.group(1)) if match else None
       
     
@@ -45,12 +53,14 @@ def recept_v_slovar(recept):
     }
 
 def recepte_v_datoteko(ime, directory):
+    """Prebere HTML datoteko, iz nje izvleče recepte in jih vrne kot seznam slovarjev."""
     vsebina_strani = preberi_dat_v_niz(directory, ime)
     recept = stran_v_recepte(vsebina_strani)
     recepti = [recept_v_slovar(kos) for kos in recept]
     return [rec for rec in recepti]
 
 def odstrani_duplikate(recepti):
+    """Odstrani podvojene recepte iz seznama 'recepti', tako da preveri unikatnost ID receptov."""
     videni = set()
     unikatni_recepti = []
     for recept in recepti:
@@ -60,10 +70,12 @@ def odstrani_duplikate(recepti):
     return unikatni_recepti
 
 def preberi_vse_datoteke(directory):
+    """Prebere vse HTML datoteke v podanem imeniku 'directory', iz vsake 
+    izvleče recepte in vrne seznam vseh unikatnih receptov."""
     recepti = []
     for ime_datoteke in os.listdir(directory):
         if ime_datoteke.endswith('.html'):
-            print(f"Obdelujem datoteko: {ime_datoteke}")
+            print(f'Obdelujem datoteko: {ime_datoteke}')
             vsebina_strani = preberi_dat_v_niz(directory, ime_datoteke)
             recepti_iz_datoteke = stran_v_recepte(vsebina_strani)
             recepti.extend([recept_v_slovar(kos) for kos in recepti_iz_datoteke])

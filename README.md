@@ -15,7 +15,7 @@ Predpogoj za pravilno delovanje projekta je naložen program Python verzije 3. V
 Za optimalno delovanje funkcij je zaželjena namestitev naslednjih knjižnic, v kolikor jih še nimate. Namestite jih lahko s sledečim ukazom v terminalu:
 * knjižnice za pridobivanje, obdelovanje in shranjevanje podatkov
 ```
-pip install os requests re csv
+pip install os requests re csv html
 ```
 * knjižnice za analizo podatkov
 ```
