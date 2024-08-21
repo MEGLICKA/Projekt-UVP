@@ -16,9 +16,9 @@ Za optimalno delovanje funkcij je zaželjena namestitev naslednjih knjižnic, v 
 ```
 pip install __knjižnica__
 ```
-* knjižnice za pridobivanje, obdelovanje in shranjevanje podatkov: **os requests re csv html**
+* knjižnice za pridobivanje, obdelovanje in shranjevanje podatkov: **os, requests, re, csv, html**
 
-* knjižnice za analizo podatkov: **pandas mathplotlib numpy seaborn**
+* knjižnice za analizo podatkov: **pandas, mathplotlib, numpy, seaborn**
 
 ### Zagon programa
 Po pravilni vzpostavitvi delovnega okolja in kloniranju repozitorija, program zaženete s klicom datoteke `Main.py` v terminalu:
